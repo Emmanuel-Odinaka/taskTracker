@@ -1,0 +1,37 @@
+<div class="ui hidden divider"></div>
+<div class="ui container">
+  <h1 class="ui center aligned massive header">Task Management App</h1>
+  <form
+    class="ui very padded raised segment form"
+    [formGroup]="featureForm"
+    (ngSubmit)="onSubmitted()"
+  >
+    <div class="ui container">
+      <h2 class="ui center aligned large header">Create New Task</h2>
+      <label for="title">Task Title </label>
+      <div class="ui input">
+        <input
+          type="text"
+          id="title"
+          placeholder="Task title..."
+          formControlName="taskTitle"
+        />
+      </div>
+      <div class="ui hidden divider"></div>
+      <label for="description">Task Description </label>
+      <div class="ui input">
+        <input
+          type="text"
+          id="description"
+          placeholder="Task Description..."
+          formControlName="taskDescription"
+        />
+      </div>
+      <div>
+        <button class="ui green button" type="submit">Add Task</button>
+      </div>
+      <p *ngIf="!featureForm.valid">{{ success }}</p>
+    </div>
+  </form>
+</div>
+<div class="ui hidden divider"></div>

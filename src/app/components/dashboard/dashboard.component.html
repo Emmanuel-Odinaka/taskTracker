@@ -1,0 +1,71 @@
+<h1 class="ui massive center aligned header">Dashboard</h1>
+<div class="ui three column center aligned grid">
+  <div
+    cdkDropList
+    [cdkDropListData]="displayData"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[progress, done]"
+    #new="cdkDropList"
+    class="column"
+  >
+    <h4 class="ui center aligned header">
+      New Task <i class="ui green hourglass start icon"></i>
+    </h4>
+    <div cdkDrag *ngFor="let item of displayData" class="ui cards">
+      <div class="green card">
+        <div class="content">
+          <div class="header">{{ item[0] }}</div>
+          <div class="description">
+            {{ item[1] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="progressData"
+    [cdkDropListConnectedTo]="[new, done]"
+    (cdkDropListDropped)="drop($event)"
+    #progress="cdkDropList"
+    class="column"
+  >
+    <h4 class="ui center aligned header">
+      In Progress <i class="ui green spinner icon"></i>
+    </h4>
+    <div cdkDrag *ngFor="let item of progressData" class="ui cards">
+      <div class="green card">
+        <div class="content">
+          <div class="header">{{ item[0] }}</div>
+          <div class="description">
+            {{ item[1] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="doneData"
+    [cdkDropListConnectedTo]="[new, progress]"
+    (cdkDropListDropped)="drop($event)"
+    #done="cdkDropList"
+    class="column"
+  >
+    <h4 class="ui center aligned header">
+      Done <i class="ui green calendar check icon"></i>
+    </h4>
+    <div cdkDrag *ngFor="let item of doneData" class="ui cards">
+      <div class="green card">
+        <div class="content">
+          <div class="header">{{ item[0] }}</div>
+          <div class="description">
+            {{ item[1] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
